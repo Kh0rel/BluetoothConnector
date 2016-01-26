@@ -17,6 +17,8 @@
 		2C3281A31C504F6E0062FAA2 /* BLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3280A21C504F6E0062FAA2 /* BLE.swift */; };
 		2C3282411C504FE10062FAA2 /* SHHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C32823F1C504FE10062FAA2 /* SHHomeViewController.m */; };
 		2C3282421C504FE10062FAA2 /* SHHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C3282401C504FE10062FAA2 /* SHHomeViewController.xib */; };
+		2C9BD8021C582ABA005E0DAE /* SimpleTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C9BD8011C582ABA005E0DAE /* SimpleTableCell.xib */; };
+		2C9BD8051C5831CE005E0DAE /* SimpleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BD8041C5831CE005E0DAE /* SimpleTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,9 @@
 		2C32823E1C504FE10062FAA2 /* SHHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHHomeViewController.h; sourceTree = "<group>"; };
 		2C32823F1C504FE10062FAA2 /* SHHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHHomeViewController.m; sourceTree = "<group>"; };
 		2C3282401C504FE10062FAA2 /* SHHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHHomeViewController.xib; sourceTree = "<group>"; };
+		2C9BD8011C582ABA005E0DAE /* SimpleTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleTableCell.xib; sourceTree = "<group>"; };
+		2C9BD8031C5831CE005E0DAE /* SimpleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleTableViewCell.h; sourceTree = "<group>"; };
+		2C9BD8041C5831CE005E0DAE /* SimpleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +103,9 @@
 				2C32823E1C504FE10062FAA2 /* SHHomeViewController.h */,
 				2C32823F1C504FE10062FAA2 /* SHHomeViewController.m */,
 				2C3282401C504FE10062FAA2 /* SHHomeViewController.xib */,
+				2C9BD8011C582ABA005E0DAE /* SimpleTableCell.xib */,
+				2C9BD8031C5831CE005E0DAE /* SimpleTableViewCell.h */,
+				2C9BD8041C5831CE005E0DAE /* SimpleTableViewCell.m */,
 			);
 			path = BluetoothConnector;
 			sourceTree = "<group>";
@@ -237,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C3282421C504FE10062FAA2 /* SHHomeViewController.xib in Resources */,
+				2C9BD8021C582ABA005E0DAE /* SimpleTableCell.xib in Resources */,
 				2C3281A11C504F6E0062FAA2 /* .gitignore in Resources */,
 				2C3280291C4FE4A00062FAA2 /* LaunchScreen.xib in Resources */,
 				2C3280261C4FE4A00062FAA2 /* Images.xcassets in Resources */,
@@ -258,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C3282411C504FE10062FAA2 /* SHHomeViewController.m in Sources */,
+				2C9BD8051C5831CE005E0DAE /* SimpleTableViewCell.m in Sources */,
 				2C3281A31C504F6E0062FAA2 /* BLE.swift in Sources */,
 				2C32801E1C4FE4A00062FAA2 /* AppDelegate.m in Sources */,
 				2C32801B1C4FE4A00062FAA2 /* main.m in Sources */,
@@ -448,6 +458,7 @@
 				2C32803A1C4FE4A00062FAA2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2C32803B1C4FE4A00062FAA2 /* Build configuration list for PBXNativeTarget "BluetoothConnectorTests" */ = {
 			isa = XCConfigurationList;
@@ -456,6 +467,7 @@
 				2C32803D1C4FE4A00062FAA2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface SHHomeViewController : UIViewController
+#import "SimpleTableViewCell.h"
+@interface SHHomeViewController : UIViewController <UITableViewDelegate, UITableViewDelegate>{
+    
+    NSArray *tableData_;
+    NSArray *rssiInfo_;
+}
 
 @end
