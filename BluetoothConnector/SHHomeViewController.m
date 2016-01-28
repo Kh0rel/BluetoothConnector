@@ -9,7 +9,7 @@
 #import "SHHomeViewController.h"
 
 @implementation SHHomeViewController
-
+@synthesize ble;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -46,5 +46,13 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 78;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger index = indexPath.row;
+    SHDetailsViewController* v = [SHDetailsViewController new];
+    v.deviceName = [tableData_ objectAtIndex:index];
+    [self.navigationController pushViewController:v animated:YES];
+    
 }
 @end

@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "SimpleTableViewCell.h"
+#import "SHDetailsViewController.h"
+#import "BLE.h"
 @interface SHHomeViewController : UIViewController <UITableViewDelegate, UITableViewDelegate>{
     
     NSArray *tableData_;
     NSArray *rssiInfo_;
 }
-
+@property(nonatomic,strong)BLE *ble;
 @end
