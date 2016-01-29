@@ -10,10 +10,14 @@
 #import "SimpleTableViewCell.h"
 #import "SHDetailsViewController.h"
 #import "BLE.h"
-@interface SHHomeViewController : UIViewController <UITableViewDelegate, UITableViewDelegate>{
-    
-    NSArray *tableData_;
-    NSArray *rssiInfo_;
+@interface SHHomeViewController : UIViewController <UITableViewDelegate, UITableViewDelegate, BLEDelegate>{
+    NSMutableArray *mDevices_;
+    NSMutableArray *deviceData_;
+    NSMutableArray *rssiInfo_;
 }
 @property(nonatomic,strong)BLE *ble;
+@property (strong, nonatomic) NSMutableArray *mDevices;
+@property (strong, nonatomic) NSMutableArray *deviceName;
+@property (strong, nonatomic) NSMutableArray *rssiInfo;
+
 @end

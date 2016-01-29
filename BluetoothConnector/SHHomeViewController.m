@@ -10,11 +10,21 @@
 
 @implementation SHHomeViewController
 @synthesize ble;
+@synthesize mDevices = mDevices_;
+@synthesize deviceName = deviceData_;
+@synthesize rssiInfo = rssiInfo_;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    ble = [[BLE alloc] init];
+    [ble controlSetup];
     
-    tableData_ = [NSArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", nil];
-    rssiInfo_ = [NSArray arrayWithObjects:@"voila",@"encore",@"xD",@"une idée", nil];
+    ble.delegate = self;
+    
+    self.mDevices = [[NSMutableArray alloc] init];
+    self.deviceName = [[NSMutableArray alloc] init];
+    deviceData_ = [NSMutableArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", nil];
+    rssiInfo_ = [NSMutableArray arrayWithObjects:@"voila",@"encore",@"xD",@"une idée", nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,7 +34,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [tableData_ count];
+    return [deviceData_ count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -38,7 +48,7 @@
         cell = [nib objectAtIndex:0];
     }
     
-    cell.nameDevice.text = [tableData_ objectAtIndex:indexPath.row];
+    cell.nameDevice.text = [deviceData_ objectAtIndex:indexPath.row];
     cell.rssiRange.text = [rssiInfo_ objectAtIndex:indexPath.row];
     
     return cell;
@@ -51,7 +61,7 @@
 {
     NSInteger index = indexPath.row;
     SHDetailsViewController* v = [SHDetailsViewController new];
-    v.deviceName = [tableData_ objectAtIndex:index];
+    v.deviceName = [deviceData_ objectAtIndex:index];
     [self.navigationController pushViewController:v animated:YES];
     
 }
