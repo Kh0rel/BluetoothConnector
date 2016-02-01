@@ -15,9 +15,13 @@
 @implementation SHDetailsViewController
 @synthesize deviceName = deviceName_;
 @synthesize deviceRRSI = deviceRSSI_;
+@synthesize deviceIndex = deviceIndex_;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = deviceName_;
+    CBPeripheral *p = [self.ble.peripherals objectAtIndex:self.deviceIndex];
+    [self.ble connectPeripheral:p];
+    
     // Do any additional setup after loading the view from its nib.
 }
 

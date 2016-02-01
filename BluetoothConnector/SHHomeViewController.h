@@ -11,6 +11,7 @@
 #import "SHDetailsViewController.h"
 #import "BLE.h"
 @interface SHHomeViewController : UIViewController <UITableViewDelegate, UITableViewDelegate, BLEDelegate>{
+    IBOutlet UIActivityIndicatorView *activityScanning;
     NSMutableArray *mDevices_;
     NSMutableArray *deviceData_;
     NSMutableArray *rssiInfo_;
@@ -19,5 +20,7 @@
 @property (strong, nonatomic) NSMutableArray *mDevices;
 @property (strong, nonatomic) NSMutableArray *deviceName;
 @property (strong, nonatomic) NSMutableArray *rssiInfo;
+@property (strong, nonatomic) IBOutlet UIButton *scanButton;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

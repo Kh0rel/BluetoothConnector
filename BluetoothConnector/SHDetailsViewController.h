@@ -7,14 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface SHDetailsViewController : UIViewController {
+#import "BLE.h"
+@interface SHDetailsViewController : UIViewController<BLEDelegate> {
     @public
     NSString* deviceName_;
     NSString* deviceRSSI_;
+    NSUInteger deviceIndex_;
     
 }
 
 @property (nonatomic,strong) NSString* deviceName;
 @property (nonatomic,strong) NSString* deviceRRSI;
+@property (nonatomic,assign) NSUInteger deviceIndex;
+@property (nonatomic,strong) BLE *ble;
 @end

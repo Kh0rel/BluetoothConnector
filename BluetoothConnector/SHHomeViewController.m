@@ -13,18 +13,17 @@
 @synthesize mDevices = mDevices_;
 @synthesize deviceName = deviceData_;
 @synthesize rssiInfo = rssiInfo_;
-
+@synthesize scanButton;
 - (void)viewDidLoad {
     [super viewDidLoad];
     ble = [[BLE alloc] init];
     [ble controlSetup];
-    
+    self.title = @"Bluetooth Connector";
     ble.delegate = self;
     
     self.mDevices = [[NSMutableArray alloc] init];
     self.deviceName = [[NSMutableArray alloc] init];
-    deviceData_ = [NSMutableArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", nil];
-    rssiInfo_ = [NSMutableArray arrayWithObjects:@"voila",@"encore",@"xD",@"une idée", nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,7 +33,23 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [deviceData_ count];
+    return [self.deviceName count];
+}
+- (IBAction)scanClicked:(id)sender {
+    if (ble.activePeripheral)
+        if(ble.activePeripheral.state == CBPeripheralStateConnected)
+        {
+            [[ble CM] cancelPeripheralConnection:[ble activePeripheral]];
+            return;
+        }
+    
+    if (ble.peripherals)
+        ble.peripherals = nil;
+    
+    [ble findBLEPeripherals:3];
+    
+    [NSTimer scheduledTimerWithTimeInterval:(float)3.0 target:self selector:@selector(connectionTimer:) userInfo:nil repeats:NO];
+    [activityScanning startAnimating];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -48,8 +63,8 @@
         cell = [nib objectAtIndex:0];
     }
     
-    cell.nameDevice.text = [deviceData_ objectAtIndex:indexPath.row];
-    cell.rssiRange.text = [rssiInfo_ objectAtIndex:indexPath.row];
+    cell.nameDevice.text = [self.deviceName objectAtIndex:indexPath.row];
+    cell.rssiRange.text = [self.rssiInfo objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -61,8 +76,43 @@
 {
     NSInteger index = indexPath.row;
     SHDetailsViewController* v = [SHDetailsViewController new];
-    v.deviceName = [deviceData_ objectAtIndex:index];
+    v.deviceIndex = index;
+    v.deviceName = [self.deviceName objectAtIndex:index];
+    v.deviceRRSI = [self.rssiInfo objectAtIndex:index];
+    v.ble        = self.ble;
     [self.navigationController pushViewController:v animated:YES];
     
 }
+-(void) connectionTimer:(NSTimer *)timer
+{
+    
+    [scanButton setEnabled:YES];
+    
+    
+    [self.mDevices removeAllObjects];
+    [self.deviceName removeAllObjects];
+    
+    int i;
+    for (i = 0; i < ble.peripherals.count; i++)
+    {
+        CBPeripheral *p = [ble.peripherals objectAtIndex:i];
+        
+        if (p.identifier.UUIDString != nil)
+        {
+            if (p.name != nil) {
+                [self.deviceName insertObject:p.name atIndex:i];
+            } else {
+                [self.deviceName insertObject:@"RedBear Device" atIndex:i];
+            }
+        }
+        else
+        {
+            [self.deviceName insertObject:@"RedBear Device" atIndex:i];
+        }
+    }
+    [self.tableView reloadData];
+    [activityScanning stopAnimating];
+}
+
+
 @end
